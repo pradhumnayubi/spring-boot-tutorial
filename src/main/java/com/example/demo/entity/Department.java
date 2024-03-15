@@ -1,6 +1,8 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+
 
 @Entity
 public class Department {
@@ -9,6 +11,8 @@ public class Department {
     @SequenceGenerator(name="MYSEQ", sequenceName="my_seq_id", allocationSize=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MYSEQ")
     private Long departmentId;
+
+    @NotBlank(message = "Please add department name")
     private String departmentName;
     private String departmentAddress;
     private String departmentCode;
@@ -54,8 +58,6 @@ public class Department {
     public void setDepartmentCode(String departmentCode) {
         this.departmentCode = departmentCode;
     }
-
-
 
 
     @Override
